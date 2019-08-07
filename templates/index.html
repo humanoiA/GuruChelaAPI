@@ -1,0 +1,176 @@
+{% extends 'layout.html' %} {% block body %}
+<div class="page-content">
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <!-- <h2 class="mdl-card__title-text"></h2> -->
+    </div>
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar">
+        <a href="#teacher-login" class="mdl-tabs__tab is-active" id="tlogin-tab"
+          >Teacher's Login</a
+        >
+        <a href="#teacher-reg" class="mdl-tabs__tab" id="treg-tab"
+          >Register as Teacher</a
+        >
+      </div>
+
+      <div class="mdl-tabs__panel is-active" id="teacher-login">
+        <form action="" method="POST">
+          <div
+            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+          >
+            <input
+              class="mdl-textfield__input"
+              type="email"
+              id="login-email-uname"
+              name="login-email-uname"
+              required
+            />
+            <label class="mdl-textfield__label" for="email-uname">Email</label>
+          </div>
+          <br />
+          <div
+            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+          >
+            <input
+              class="mdl-textfield__input"
+              type="password"
+              id="login-password"
+              name="login-password"
+              required
+            />
+            <label class="mdl-textfield__label" for="login-password"
+              >Password</label
+            >
+          </div>
+          <br />
+          <br />
+          <!-- Colored raised button -->
+          <input
+            type="submit"
+            value="Login"
+            id="login-btn"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+          />
+        </form>
+      </div>
+      <div class="mdl-tabs__panel" id="teacher-reg">
+        <form action="" method="POST">
+          <p>* marked fields are required</p>
+          <div
+            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+          >
+            <input
+              class="mdl-textfield__input"
+              type="text"
+              id="reg-name"
+              name="reg-name"
+              required
+            />
+            <label class="mdl-textfield__label" for="email-uname"
+              >Full Name*</label
+            >
+          </div>
+          <br />
+          <p style="font-size: 18px;font-weight: 500;margin:0;">
+            Gender
+          </p>
+          <br />
+          <label
+            class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+            for="maleOpt"
+            style="padding-right: 1rem;margin-right: 1rem"
+          >
+            <input
+              type="radio"
+              id="maleOpt"
+              name="gender"
+              class="mdl-radio__button"
+              required
+            />
+            <span class="mdl-radio__label">Male</span>
+          </label>
+          <label
+            class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+            for="femaleOpt"
+          >
+            <input
+              type="radio"
+              id="femaleOpt"
+              name="gender"
+              class="mdl-radio__button"
+              required
+            />
+            <span class="mdl-radio__label">Female</span>
+          </label>
+
+          <br />
+          <div
+            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+          >
+            <input
+              class="mdl-textfield__input"
+              type="email"
+              id="reg-email"
+              name="reg-email"
+              required
+            />
+            <label class="mdl-textfield__label" for="reg-email">Email*</label>
+          </div>
+          <br />
+          <div
+            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+          >
+            <input
+              class="mdl-textfield__input"
+              type="text"
+              id="reg-dept"
+              name="reg-dept"
+              list="dept"
+              required
+            />
+            <label class="mdl-textfield__label" for="reg-dept"
+              >Course/Department*</label
+            >
+            <datalist id="dept">
+              <option value="CSE"> </option>
+              <option value="IT"> </option>
+              <option value="ECE"> </option>
+              <option value="EE"> </option>
+              <option value="ME"> </option>
+              <option value="CE"> </option>
+              <option value="AEIE"> </option>
+              <option value="BBA"> </option>
+              <option value="BHM"> </option>
+              <option value="BBM"> </option>
+            </datalist>
+          </div>
+          <br />
+          <div
+            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+          >
+            <input
+              class="mdl-textfield__input"
+              type="password"
+              id="reg-password"
+              name="reg-password"
+              required
+            />
+            <label class="mdl-textfield__label" for="reg-password"
+              >Password*</label
+            >
+          </div>
+          <br /><br />
+          <!-- Colored raised button -->
+          <input
+            type="submit"
+            value="Register"
+            id="reg-btn"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
