@@ -15,9 +15,9 @@ def home():
 def index():
     mydb = mysql.connector.connect(
         host="remotemysql.com",
-        user="DcRR6aobND",
-        passwd="xh7QRmkdzC",
-        database="DcRR6aobND"
+        user="6fmKMRyVWv",
+        passwd="li0yQeOzCa",
+        database="6fmKMRyVWv"
     )
     mycursor = mydb.cursor()
     mycursor.execute(
@@ -32,9 +32,9 @@ def search(query):
    # return 'OK!'
     mydb = mysql.connector.connect(
         host="remotemysql.com",
-        user="DcRR6aobND",
-        passwd="xh7QRmkdzC",
-        database="DcRR6aobND"
+        user="6fmKMRyVWv",
+        passwd="li0yQeOzCa",
+        database="6fmKMRyVWv"
     )
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM teachers_arena INNER JOIN teachers_login WHERE " + "teachers_arena.TID=teachers_login.id AND Time_Date>now() AND (teachers_login.name LIKE '%" + query
@@ -51,9 +51,9 @@ def register():
             data = request.form
             mydb = mysql.connector.connect(
                 host="remotemysql.com",
-                user="DcRR6aobND",
-                passwd="xh7QRmkdzC",
-                database="DcRR6aobND"
+                user="6fmKMRyVWv",
+                passwd="li0yQeOzCa",
+                database="6fmKMRyVWv"
             )
             mycursor = mydb.cursor()
             query = "INSERT INTO teachers_login (name, email, pass, dept, gender) VALUES(%s, %s, %s, %s, %s)"
@@ -73,9 +73,9 @@ def register():
 def teachers_detail(sub, pre, ven, crc, all, tid, date, time):
     mydb = mysql.connector.connect(
         host="remotemysql.com",
-        user="DcRR6aobND",
-        passwd="xh7QRmkdzC",
-        database="DcRR6aobND"
+        user="6fmKMRyVWv",
+        passwd="li0yQeOzCa",
+        database="6fmKMRyVWv"
     )
     mycursor = mydb.cursor()
     mycursor.execute("INSERT INTO teachers_arena (subject, prerequisite, venue, currency_requirement, allowance, TID, Time_Date, UniID) VALUES('" +
@@ -91,9 +91,9 @@ def teachers_detail(sub, pre, ven, crc, all, tid, date, time):
 def teachers_dashboard(Tmail):
     mydb = mysql.connector.connect(
         host="remotemysql.com",
-        user="DcRR6aobND",
-        passwd="xh7QRmkdzC",
-        database="DcRR6aobND"
+        user="6fmKMRyVWv",
+        passwd="li0yQeOzCa",
+        database="6fmKMRyVWv"
     )
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * from teachers_arena INNER JOIN teachers_login where " + "teachers_arena.TID=teachers_login.id and teachers_arena.Time_Date>now() and teachers_login.email=\""+Tmail+"\"")
