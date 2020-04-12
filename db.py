@@ -42,31 +42,22 @@ def search(query):
     return jsonify(a=myresult)
 
 
-@app.route('/api/register', methods=['POST'])
+@app.route('/api/register/<name>/<email>/<passw>/<dept>/<gender>')
 @cross_origin()
-def register():
-    if request.method == 'POST':
-        if len(request.form) > 0:
-            data = request.form
-            mydb = mysql.connector.connect(
+def register(name,email,passw,dept,gender):
+    mydb = mysql.connector.connect(
                 host="remotemysql.com",
                 user="6fmKMRyVWv",
                 passwd="li0yQeOzCa",
                 database="6fmKMRyVWv"
             )
-            mycursor = mydb.cursor()
-            query = "INSERT INTO teachers_login (name, email, pass, dept, gender) VALUES(%s, %s, %s, %s, %s)"
-            val = (data['name'], data['email'], data['pass'],
-                   data['dept'], data['gender'])
-            mycursor.execute(query, val)
-            mydb.commit()
-            return jsonify(True)
-        else:
-            return jsonify("bad request")
-    else:
-        return None
-
-
+    mycursor = mydb.cursor()
+    query = "INSERT INTO teachers_login (name, email, pass, dept, gender) VALUES('" +name+"',"+"'"+email+"',"+"'"+passw+"','"+dept+"','"+gender+"'"+")"
+#        val = (data['name'], data['email'], data['pass'],
+#                   data['dept'], data['gender'])
+    mycursor.execute(query)
+    mydb.commit()
+    return jsonify(True)
 @app.route('/api/<sub>/<pre>/<ven>/<crc>/<all>/<tid>/<date>/<time>')
 @cross_origin()
 def teachers_detail(sub, pre, ven, crc, all, tid, date, time):
@@ -83,8 +74,6 @@ def teachers_detail(sub, pre, ven, crc, all, tid, date, time):
     #return jsonify(ALPHA=sub+"',"+"'"+pre+"',"+"'"+ven+"',"+crc+","+all+","+tid+","+"'"+date+" "+time+"',NULL)")
     #myresult = mycursor.fetchall()
     return jsonify(ALPHA="OK")
-
-
 @app.route('/api/<Tmail>', methods=['GET'])
 @cross_origin()
 def teachers_dashboard(Tmail):
