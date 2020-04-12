@@ -37,8 +37,8 @@ def search(query):
         database="6fmKMRyVWv"
     )
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM teachers_arena INNER JOIN teachers_login WHERE " + "teachers_arena.TID=teachers_login.id AND Time_Date>now() AND (teachers_login.name LIKE '%" + query
-                     + "%' OR teachers_arena.subject LIKE '%" + query + "%')")
+    mycursor.execute("SELECT EXISTS(SELECT * FROM teachers_arena INNER JOIN teachers_login WHERE " + "teachers_arena.TID=teachers_login.id AND Time_Date>now() AND (teachers_login.name LIKE '%" + query
+                     + "%' OR teachers_arena.subject LIKE '%" + query + "%'))")
     myresult = mycursor.fetchall()
     return jsonify(a=myresult)
 
@@ -81,9 +81,9 @@ def teachers_detail(sub, pre, ven, crc, all, tid, date, time):
     mycursor.execute("INSERT INTO teachers_arena (subject, prerequisite, venue, currency_requirement, allowance, TID, Time_Date, UniID) VALUES('" +
                      sub+"',"+"'"+pre+"',"+"'"+ven+"',"+crc+","+all+","+tid+","+"'"+date+" "+time+"',NULL)")
     mydb.commit()
+    #return jsonify(ALPHA=sub+"',"+"'"+pre+"',"+"'"+ven+"',"+crc+","+all+","+tid+","+"'"+date+" "+time+"',NULL)")
+    #myresult = mycursor.fetchall()
     return jsonify(ALPHA="OK")
-   # myresult = mycursor.fetchall()
-  #  return jsonify(ALPHA=myresult)
 
 
 @app.route('/api/<Tmail>', methods=['GET'])
