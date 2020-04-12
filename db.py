@@ -37,8 +37,7 @@ def search(query):
         database="6fmKMRyVWv"
     )
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT EXISTS(SELECT * FROM teachers_arena INNER JOIN teachers_login WHERE " + "teachers_arena.TID=teachers_login.id AND Time_Date>now() AND (teachers_login.name LIKE '%" + query
-                     + "%' OR teachers_arena.subject LIKE '%" + query + "%'))")
+    mycursor.execute("SELECT count(*) FROM teachers_login WHERE EMAIL =" + '"'+query+'"')
     myresult = mycursor.fetchall()
     return jsonify(a=myresult)
 
